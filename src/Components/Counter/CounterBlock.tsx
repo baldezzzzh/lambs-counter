@@ -13,7 +13,7 @@ const CounterBlock = ({counter, maxValue}:CounterBlockPropsType) => {
 
 
     return (
-        <p className={`${classes.text} ${counter === maxValue ? classes.error : ''}`}>{counter}</p>
+        <p  className={`${classes.text} ${counter === maxValue ? classes.error : ''}`}>{counter}</p>
     )
 }
 

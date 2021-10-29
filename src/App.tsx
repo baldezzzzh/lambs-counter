@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Counter from "./Components/Counter/Counter";
 import CounterSetter from "./Components/CounterSetter/CounterSetter";
+import LambInner from "./Components/LambInner";
 
 function App() {
 
@@ -53,6 +54,8 @@ function App() {
         localStorage.setItem('maxValue', JSON.stringify(maxValue))
     },[maxValue] )
 
+
+  
 
     const getStartInputValue = (value : number) => {
         setStartValue(value)
@@ -134,30 +137,32 @@ function App() {
     }
 
 
+
     return (
         <div className="App">
-
-
-            <CounterSetter
-                setCounterValue={setCounterValue}
-                getStartInputValue={getStartInputValue}
-                getMaxInputValue={getMaxInputValue}
-                maxValue={maxValue}
-                starValue={startValue}
-                counter={counter}
-                error={error}
-                setError={setError}
-                disabled={disabled}
-            />
-            <Counter
-                counter={counter}
-                incCounter={incCounter}
-                resetCounter={resetCounter}
-                maxValue={maxValue}
-                startValue={startValue}
-                error={error}
-                setError={setError}
-            />
+            <LambInner/>
+            <main>
+                <CounterSetter
+                    setCounterValue={setCounterValue}
+                    getStartInputValue={getStartInputValue}
+                    getMaxInputValue={getMaxInputValue}
+                    maxValue={maxValue}
+                    starValue={startValue}
+                    counter={counter}
+                    error={error}
+                    setError={setError}
+                    disabled={disabled}
+                />
+                <Counter
+                    counter={counter}
+                    incCounter={incCounter}
+                    resetCounter={resetCounter}
+                    maxValue={maxValue}
+                    startValue={startValue}
+                    error={error}
+                    setError={setError}
+                />
+            </main>
         </div>
     );
 }

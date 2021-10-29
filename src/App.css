@@ -5,14 +5,15 @@
 body{
   background-color: rgba(0, 0, 0, 0.8);
   font-family: 'Roboto Mono', monospace;
+  overflow: hidden;
 }
-.App{
+main{
   display: flex;
   justify-content: center;
   padding-top: 200px;
 }
 .counter{
-  border: 5px solid #35047c;
+  border: 5px solid #000;
   width: 400px;
   border-radius: 5px;
   padding: 20px;
@@ -27,7 +28,7 @@ input{
 .counter_entry-text{
   height: 139px;
   margin: 0px 0px 15px 0px;
-  border: 3px solid #35047c;
+  border: 3px solid #000;
   text-align: center;
   font-size: 27px;
   display: flex;
@@ -42,4 +43,30 @@ input{
 }
 .valueLine + .valueLine{
   margin-bottom: 20px;
+}
+@keyframes spin {
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
+}
+img.lamb{
+  width: 8%;
+  height: 8%;
+}
+img:nth-child(even).lamb{
+  animation: spin 5s linear 0s infinite;
+}
+@keyframes reversed_spin {
+  from {transform:rotate(360deg);}
+  to {transform:rotate(0deg);}
+}
+img:nth-child(odd).lamb{
+  animation: reversed_spin 5s linear 0s infinite;
+}
+.lamb_inner{
+  padding: 0px 20px;
+ display: flex;
+  justify-content: space-between;
+}
+p{
+  color: aliceblue;
 }
