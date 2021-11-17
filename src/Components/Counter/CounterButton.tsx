@@ -1,7 +1,6 @@
 import React from "react";
 import classes from "./Counter.module.css";
 
-
 type CounterButtonPropsType = {
     name: string
     callback: () => void

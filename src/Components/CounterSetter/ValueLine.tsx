@@ -1,24 +1,24 @@
 import React, {Dispatch, SetStateAction} from "react";
 import {log} from "util";
 import {on} from "cluster";
+import {useDispatch, useSelector} from "react-redux";
+import {RootReducerType} from "../../redux/store";
+import {setDisabledExceptionAC} from "../../redux/counter-reducer";
 
 type ValueLinePropsType = {
     name: string
     getInputValue: (value : number) => void
-    setError: Dispatch<SetStateAction<boolean>>
-    error: boolean
     value: number
 }
 
 
-const ValueLine = ({name, getInputValue, setError, error, value}:ValueLinePropsType) => {
-
+const ValueLine = ({name, getInputValue, value}:ValueLinePropsType) => {
+    let error = useSelector<RootReducerType, boolean>(state => state.counter.error)
+    let dispatch = useDispatch()
     const onChangeHandler = (e: any) => {
         const inputValue = +e.currentTarget.value
         getInputValue(inputValue)
-        if ( inputValue < 0 ){
-            setError(true)
-        }
+        dispatch(setDisabledExceptionAC(true))
     }
 
     return(

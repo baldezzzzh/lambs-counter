@@ -4,35 +4,22 @@ import CounterBlock from "./CounterBlock";
 import CounterButtons from "./CounterButtons";
 import Noerror from "../Noerror";
 import Error from "../Error";
+import {useSelector} from "react-redux";
+import {RootReducerType} from "../../redux/store";
+import {CounterType} from "../../redux/counter-reducer";
 
 type CounterPropsType = {
-    counter: number
-    incCounter: () => void
-    resetCounter: () => void
-    maxValue: number
-    startValue: number
-    error: boolean
-    setError: Dispatch<SetStateAction<boolean>>
 
 }
 
-const Counter = ({counter, incCounter, resetCounter, maxValue, startValue, error, setError}: CounterPropsType) => {
+const Counter = ({}: CounterPropsType) => {
 
-
+    let error = useSelector<RootReducerType, boolean>(state => state.counter.error)
 
     return (
         <div className={'counter'}>
-
-            {!error ? <Noerror counter={counter} maxValue={maxValue}/> : <Error/>}
-
-
-            <CounterButtons
-                incCounter={incCounter}
-                resetCounter={resetCounter}
-                counter={counter}
-                maxValue={maxValue}
-                error={error}
-            />
+            {error ? <Error/> : <Noerror/>}
+            <CounterButtons/>
         </div>
     )
 }
